@@ -1,13 +1,13 @@
 configuration:
   - Debug
-  - Release
+  #- Release
 
 environment:
   CTEST_OUTPUT_ON_FAILURE: 1
   matrix:
-  - BUILD: msvc
-  - BUILD: msvc
-    PLATFORM: x64
+  #- BUILD: msvc
+  #- BUILD: msvc
+  #  PLATFORM: x64
   - BUILD: mingw
 
 before_build:
@@ -16,6 +16,7 @@ before_build:
 
 build_script:
   - python support/appveyor-build.py
+  - bin\assert-test
 
 on_failure:
   - appveyor PushArtifact Testing/Temporary/LastTest.log
